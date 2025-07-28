@@ -1,4 +1,5 @@
 import { ImageCompressor } from "@/components/image-compressor";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -7,15 +8,18 @@ export default function Home() {
         <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">
             <h1 className="mb-4 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50 md:text-5xl">
-              Convert Photos to 40 KB
+              Convert Photo to 40 KB
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400">
-              Thank you, Biswa.
+              Thank you, Biswa. No premium subscriptions required.
+            </p>
+            <p className="text-sm text-slate-600 dark:text-slate-400">
+              This website was <span className="line-through">built</span> vibe-coded in an hour with Next.js and some vodka. I would really appreciate it if you could check out my music, which unlike this website, was only made with some vodka: <Link className="text-blue-600 dark:text-blue-400 underline" target="_blank" href={"https://youtu.be/M3rhZJRd0eQ"}>Cute Fluffy Kitten - UwU UwU Bunbuns</Link>
             </p>
           </div>
           <ImageCompressor />
         </div>
       </div>
-    </main>
+    </main >
   );
 }
