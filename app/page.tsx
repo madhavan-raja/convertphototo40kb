@@ -11,7 +11,7 @@ export default function Home() {
               Convert Photo to 40 KB
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400">
-              Thank you, Biswa. No premium subscriptions required.
+              Thank you Biswa, very cool. No premium subscriptions required.
             </p>
             <p className="text-sm text-slate-600 dark:text-slate-400">
               This website was <span className="line-through">built</span> vibe-coded in an hour with Next.js and some vodka. I would really appreciate it if you could check out my music, which unlike this website, was only made with some vodka: <Link className="text-blue-600 dark:text-blue-400 underline" target="_blank" href={"https://youtu.be/M3rhZJRd0eQ"}>Cute Fluffy Kitten - UwU UwU Bunbuns</Link>
