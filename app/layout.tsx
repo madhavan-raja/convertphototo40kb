@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Convert Photos to 40 KB",
+  title: "Convert Photo to 40 KB",
   description: "Converts Photos to 40 KB",
 };
 
