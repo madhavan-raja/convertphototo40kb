@@ -79,7 +79,7 @@ export function ImageCompressor() {
 
     const compressImage = async (file: File) => {
         setIsCompressing(true)
-        setProgress(10)
+        setProgress(0)
 
         try {
             // Initial compression options
@@ -87,12 +87,11 @@ export function ImageCompressor() {
                 maxSizeMB: targetSizeBytes / (1024 * 1024),
                 maxWidthOrHeight: 1920,
                 useWebWorker: true,
-                onProgress: (p: number) => setProgress(Math.min(10 + Math.round(p * 80), 90)),
+                onProgress: (p: number) => setProgress(Math.min(p, 99)),
             }
 
             // Compress the image
             const compressedFile = await imageCompression(file, options)
-            setProgress(95)
 
             // Create preview for compressed image
             const reader = new FileReader()
@@ -172,7 +171,7 @@ export function ImageCompressor() {
                             {isDragActive ? "Drop the image here" : "Drag & drop your image here"}
                         </h3>
                         <p className="mb-4 text-sm text-muted-foreground">or click to browse (JPG, PNG, WebP, GIF, HEIC, HEIF)</p>
-                        <Button disabled={isCompressing}>Select Image</Button>
+                        <Button disabled={isCompressing} className="cursor-pointer">Select Image</Button>
                     </div>
                 </CardContent>
             </Card>
@@ -224,7 +223,7 @@ export function ImageCompressor() {
                                 onClick={() => compressImage(originalImage)}
                                 variant="secondary"
                                 size="sm"
-                                className="w-full gap-2 p-4 cursor-pointer"
+                                className="w-full gap-2 p-5 cursor-pointer"
                             >
                                 <RefreshCw className="h-4 w-4" />
                                 Recompress with {targetSizeKb} KB target
@@ -257,13 +256,13 @@ export function ImageCompressor() {
                         {/* Original Image */}
                         <div className="space-y-2">
                             <h3 className="font-medium">Original</h3>
-                            <Card className="overflow-hidden">
+                            <Card className="overflow-hidden pt-0">
                                 <div className="aspect-square bg-slate-100 dark:bg-slate-800">
                                     {originalPreview && (
                                         <img
                                             src={originalPreview || "/placeholder.svg"}
                                             alt="Original"
-                                            className="h-full w-full object-contain"
+                                            className="h-full w-full aspect-square object-cover"
                                         />
                                     )}
                                 </div>
@@ -280,13 +279,13 @@ export function ImageCompressor() {
                         {/* Compressed Image */}
                         <div className="space-y-2">
                             <h3 className="font-medium">Compressed</h3>
-                            <Card className="overflow-hidden">
+                            <Card className="overflow-hidden pt-0">
                                 <div className="aspect-square bg-slate-100 dark:bg-slate-800">
                                     {compressedPreview ? (
                                         <img
                                             src={compressedPreview || "/placeholder.svg"}
                                             alt="Compressed"
-                                            className="h-full w-full object-contain"
+                                            className="h-full w-full aspect-square object-cover"
                                         />
                                     ) : (
                                         <div className="flex h-full items-center justify-center text-muted-foreground">

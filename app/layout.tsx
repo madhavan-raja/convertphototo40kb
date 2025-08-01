@@ -5,9 +5,10 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const poppins = Poppins({
-  variable: "--font-poppins",
-  weight: ["400"],
-  subsets: ["latin"],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 });
 
 const geistMono = Geist_Mono({
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${poppins.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
