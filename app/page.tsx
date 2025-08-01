@@ -7,7 +7,7 @@ export default function Home() {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
 
-      <main className="container mx-auto px-4 py-12 md:py-24 flex-1">
+      <main className="container max-w-4xl mx-auto px-4 py-12 md:py-24 flex-1">
         <div className="mb-6 text-center">
           <p className="text-lg font-bold text-foreground">
             Thank you <Link className="underline" target="_blank" href={"https://youtu.be/PK_zuAuI9x0?t=598"}>Biswa</Link>, very cool. ✨ No ads and no premium membership required ✨.
@@ -21,7 +21,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t bg-background/95 backdrop-blur">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container max-w-4xl mx-auto px-4 py-8">
           <div className="text-center text-sm text-muted-foreground">
             <p>&copy; 2025 Madhavan Raja. Built with ❤️, Next.js, and Vodka.</p>
             <p className="mt-2">Your images are processed locally and never uploaded to the internet (I can't afford server storage).</p>
