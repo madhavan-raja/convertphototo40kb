@@ -11,10 +11,12 @@ export function Header() {
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container max-w-4xl mx-auto flex h-16 items-center justify-between px-4">
                 <div className="flex items-center space-x-2">
-                    <div className="flex flex-col">
-                        <span className="text-lg font-bold tracking-tight">Convert Photo to 40 KB</span>
-                        <span className="text-xs text-muted-foreground hidden sm:block">Image Compression Tool</span>
-                    </div>
+                    <Link href="/" className="cursor-pointer">
+                        <div className="flex flex-col">
+                            <span className="text-lg font-bold tracking-tight">Convert Photo to 40 KB</span>
+                            <span className="text-xs text-muted-foreground hidden sm:block">Image Compression Tool</span>
+                        </div>
+                    </Link>
                 </div>
 
                 <div className="flex items-center space-x-2">
