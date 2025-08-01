@@ -18,26 +18,26 @@ export function Header() {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                    <Link href="https://www.madhavanraja.com" target="_blank" className="cursor-pointer">
-                        <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" asChild>
+                        <Link href="https://www.madhavanraja.com" target="_blank" className="cursor-pointer">
                             <Cat />
-                        </Button>
-                    </Link>
-                    <Link href="https://www.linkedin.com/in/madhavan-raja" target="_blank" className="cursor-pointer">
-                        <Button variant="outline" size="icon">
+                        </Link>
+                    </Button>
+                    <Button variant="outline" size="icon" asChild>
+                        <Link href="https://www.linkedin.com/in/madhavan-raja" target="_blank" className="cursor-pointer">
                             <Linkedin />
-                        </Button>
-                    </Link>
-                    <Link href="https://www.github.com/madhavan-raja" target="_blank" className="cursor-pointer">
-                        <Button variant="outline" size="icon">
+                        </Link>
+                    </Button>
+                    <Button variant="outline" size="icon" asChild>
+                        <Link href="https://www.github.com/madhavan-raja" target="_blank" className="cursor-pointer">
                             <Github />
-                        </Button>
-                    </Link>
-                    <Link href="https://linktr.ee/cutefluffykitten" target="_blank" className="cursor-pointer">
-                        <Button variant="outline" size="icon">
+                        </Link>
+                    </Button>
+                    <Button variant="outline" size="icon" asChild>
+                        <Link href="https://linktr.ee/cutefluffykitten" target="_blank" className="cursor-pointer">
                             <Music />
-                        </Button>
-                    </Link>
+                        </Link>
+                    </Button>
                     <Separator orientation="vertical" />
                     <ThemeToggle />
                 </div>

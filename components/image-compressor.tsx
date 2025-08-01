@@ -11,6 +11,8 @@ import { Separator } from "@/components/ui/separator"
 import { Slider } from "@/components/ui/slider"
 
 export function ImageCompressor() {
+    const maxSizeKb = 500
+
     const [originalImage, setOriginalImage] = useState<File | null>(null)
     const [originalPreview, setOriginalPreview] = useState<string | null>(null)
     const [compressedImage, setCompressedImage] = useState<File | null>(null)
@@ -22,7 +24,7 @@ export function ImageCompressor() {
     const [targetSizeKb, setTargetSizeKb] = useState(40)
     const targetSizeBytes = targetSizeKb * 1024
 
-    const presetSizes = [10, 25, 40, 75, 100, 200, 500]
+    const presetSizes = [10, 25, 40, 75, 100, 200, maxSizeKb]
 
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
         if (acceptedFiles.length === 0) return
@@ -107,8 +109,11 @@ export function ImageCompressor() {
             if (compressedSizeKb > targetSizeKb * 1.1) {
                 // Allow 10% tolerance
                 setError(
-                    `Compressed to ${compressedSizeKb.toFixed(1)}KB (target: ${targetSizeKb}KB). For better results, try a smaller image or increase the target size.`,
+                    `Compressed to ${compressedSizeKb.toFixed(1)}KB. For better results, try a smaller image${targetSizeKb != maxSizeKb ? " or increase the target size" : ""}.`,
                 )
+            }
+            else {
+                setError(null)
             }
         } catch (err) {
             setError("Error compressing image. Please try again.")
@@ -152,6 +157,26 @@ export function ImageCompressor() {
 
     return (
         <div className="space-y-6">
+            {/* Upload Area */}
+            <Card className={`border-2 ${isDragActive ? "border-primary border-dashed" : "border-border"}`}>
+                <CardContent className="p-6">
+                    <div
+                        {...getRootProps()}
+                        className="flex cursor-pointer flex-col items-center justify-center rounded-lg p-8 text-center"
+                    >
+                        <input {...getInputProps()} />
+                        <div className="mb-4 rounded-full bg-primary/10 p-3">
+                            <UploadCloud className="h-8 w-8 text-primary" />
+                        </div>
+                        <h3 className="mb-2 text-lg font-medium">
+                            {isDragActive ? "Drop the image here" : "Drag & drop your image here"}
+                        </h3>
+                        <p className="mb-4 text-sm text-muted-foreground">or click to browse (JPG, PNG, WebP, GIF, HEIC, HEIF)</p>
+                        <Button disabled={isCompressing}>Select Image</Button>
+                    </div>
+                </CardContent>
+            </Card>
+
             {/* Target Size Selector */}
             <Card>
                 <CardContent className="px-6">
@@ -165,7 +190,7 @@ export function ImageCompressor() {
                             <Slider
                                 value={[targetSizeKb]}
                                 onValueChange={(value) => setTargetSizeKb(value[0])}
-                                max={500}
+                                max={maxSizeKb}
                                 min={10}
                                 step={5}
                                 className="w-full"
@@ -187,9 +212,9 @@ export function ImageCompressor() {
                                     size="sm"
                                     onClick={() => setTargetSizeKb(size)}
                                     disabled={isCompressing}
-                                    className="h-7 px-2 text-xs"
+                                    className="h-7 px-2 text-xs cursor-pointer"
                                 >
-                                    {size}KB
+                                    {size} KB
                                 </Button>
                             ))}
                         </div>
@@ -199,36 +224,15 @@ export function ImageCompressor() {
                                 onClick={() => compressImage(originalImage)}
                                 variant="secondary"
                                 size="sm"
-                                className="w-full gap-2"
+                                className="w-full gap-2 p-4 cursor-pointer"
                             >
                                 <RefreshCw className="h-4 w-4" />
-                                Recompress with {targetSizeKb}KB target
+                                Recompress with {targetSizeKb} KB target
                             </Button>
                         )}
                     </div>
                 </CardContent>
             </Card>
-
-            {/* Upload Area */}
-            <Card className={`border-2 ${isDragActive ? "border-primary border-dashed" : "border-border"}`}>
-                <CardContent className="p-6">
-                    <div
-                        {...getRootProps()}
-                        className="flex cursor-pointer flex-col items-center justify-center rounded-lg p-8 text-center"
-                    >
-                        <input {...getInputProps()} />
-                        <div className="mb-4 rounded-full bg-primary/10 p-3">
-                            <UploadCloud className="h-8 w-8 text-primary" />
-                        </div>
-                        <h3 className="mb-2 text-lg font-medium">
-                            {isDragActive ? "Drop the image here" : "Drag & drop your image here"}
-                        </h3>
-                        <p className="mb-4 text-sm text-muted-foreground">or click to browse (JPG, PNG, WebP, GIF, HEIC, HEIF)</p>
-                        <Button disabled={isCompressing}>Select Image</Button>
-                    </div>
-                </CardContent>
-            </Card>
-
 
             {/* Processing Status */}
             {isCompressing && (
@@ -275,7 +279,7 @@ export function ImageCompressor() {
 
                         {/* Compressed Image */}
                         <div className="space-y-2">
-                            <h3 className="font-medium">Compressed (Target: {targetSizeKb}KB)</h3>
+                            <h3 className="font-medium">Compressed</h3>
                             <Card className="overflow-hidden">
                                 <div className="aspect-square bg-slate-100 dark:bg-slate-800">
                                     {compressedPreview ? (
