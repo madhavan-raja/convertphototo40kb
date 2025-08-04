@@ -2,7 +2,7 @@
 
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "./ui/button"
-import { Cat, Github, Linkedin, Music } from "lucide-react"
+import { Cat, Github, Linkedin } from "lucide-react"
 import Link from "next/link"
 import { Separator } from "./ui/separator"
 
@@ -13,18 +13,13 @@ export function Header() {
                 <div className="flex items-center space-x-2">
                     <Link href="/" className="cursor-pointer">
                         <div className="flex flex-col">
-                            <span className="text-lg font-bold tracking-tight">Convert Photo to 40 KB</span>
+                            <span className="text-sm md:text-lg font-bold tracking-tight">Convert Photo to 40 KB</span>
                             <span className="text-xs text-muted-foreground hidden sm:block">Image Compression Tool</span>
                         </div>
                     </Link>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                    <Button variant="outline" size="icon" asChild>
-                        <Link href="https://www.madhavanraja.com" target="_blank" className="cursor-pointer">
-                            <Cat />
-                        </Link>
-                    </Button>
                     <Button variant="outline" size="icon" asChild>
                         <Link href="https://www.linkedin.com/in/madhavan-raja" target="_blank" className="cursor-pointer">
                             <Linkedin />
@@ -37,7 +32,7 @@ export function Header() {
                     </Button>
                     <Button variant="outline" size="icon" asChild>
                         <Link href="https://linktr.ee/cutefluffykitten" target="_blank" className="cursor-pointer">
-                            <Music />
+                            <Cat />
                         </Link>
                     </Button>
                     <Separator orientation="vertical" />
