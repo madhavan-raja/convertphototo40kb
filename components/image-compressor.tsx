@@ -108,7 +108,7 @@ export function ImageCompressor() {
             if (compressedSizeKb > targetSizeKb * 1.1) {
                 // Allow 10% tolerance
                 setError(
-                    `Compressed to ${compressedSizeKb.toFixed(1)}KB. For better results, try a smaller image${targetSizeKb != maxSizeKb ? " or increase the target size" : ""}.`,
+                    `Compressed to ${compressedSizeKb.toFixed(1)} KB. For better results, try a smaller image${targetSizeKb != maxSizeKb ? " or increase the target size" : ""}.`,
                 )
             }
             else {
