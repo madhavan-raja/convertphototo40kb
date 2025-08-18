@@ -24,10 +24,10 @@ export default function Home() {
         <div className="container max-w-4xl mx-auto px-4 py-8">
           <div className="text-center text-sm text-muted-foreground">
             <p>&copy; 2025 Madhavan Raja. Built with ❤️, Next.js, and Vodka.</p>
-            <p className="mt-2">Your images are processed locally and never uploaded to the internet (I can't afford server storage).</p>
+            <p className="mt-2">Your images are processed locally and never uploaded to the internet (I can't afford server storage). Also, special thanks to the Indian Government for not supporting pictures with more than 40 KB, which led to this website being a necessity.</p>
           </div>
         </div>
-      </footer>
-    </div>
+      </footer >
+    </div >
   )
 }
